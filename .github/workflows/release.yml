@@ -11,7 +11,8 @@ jobs:
     steps:
        - name: Release
          run: |
-            sudo -E apt-get -qq install golang-go
+            printenv
+            sudo apt-get install golang-go
             go get -u github.com/tcnksm/ghr
             git config --global user.name "MD Raza"
             git config --global user.email "raza231198@gmail.com"         
