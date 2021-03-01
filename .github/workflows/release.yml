@@ -6,15 +6,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
        - name: Release
          run: |
-            wget https://golang.org/dl/go1.16.linux-amd64.tar.gz
-            sudo tar -C /usr/local -xzf go1.16.linux-amd64.tar.gz
-            export PATH=$PATH:/usr/local/go/bin
-            go get -u github.com/tcnksm/ghr
+            brew install ghr         
             git config --global user.name "MD Raza"
             git config --global user.email "raza231198@gmail.com"         
             wget https://master.dl.sourceforge.net/project/raza231198/boot.img
