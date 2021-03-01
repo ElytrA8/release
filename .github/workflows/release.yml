@@ -1,0 +1,22 @@
+name: Test Release
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+       - name: Release
+         run: |
+            sudo -E apt-get -qq install golang-go
+            go get -u github.com/tcnksm/ghr
+            git config --global user.name "MD Raza"
+            git config --global user.email "raza231198@gmail.com"         
+            wget https://master.dl.sourceforge.net/project/raza231198/boot.img
+            export UPLOAD_PATH=$(pwd)/upload
+            mkdir ${UPLOAD_PATH}
+            cp boot.img $UPLOAD_PATH/boot.img
+            ghr -t ${GITHUB_TOKEN} -u ${GITHUB_ACTOR} -r ${GITHUB_REPOSITORY} -n "Latest Test" -b "boot" -c ${GITHUB_SHA} -delete test ${UPLOAD_PATH}
