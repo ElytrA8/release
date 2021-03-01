@@ -11,6 +11,7 @@ jobs:
     steps:
        - name: Release
          run: |
+            sudo apt install golang-1.15.8-go   
             go get -u github.com/tcnksm/ghr
             git config --global user.name "MD Raza"
             git config --global user.email "raza231198@gmail.com"         
